@@ -419,6 +419,71 @@
   }
 }
 
+
+/* ====== Mobile Hamburger and Submenu ====== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 240px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu a {
+    display: block;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .menu a:last-child {
+    border-bottom: none;
+  }
+
+  /* Submenu (Mega) in Mobile */
+  .has-submenu .mega {
+    display: none;
+    flex-direction: column;
+    background: #fafafa;
+    padding: 10px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+
+  .has-submenu .mega.show {
+    display: flex !important; /* override any previous display:none */
+  }
+
+  .mega .col {
+    flex: 1 1 100%;
+    padding: 6px 0;
+  }
+
+  .mega h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -429,38 +494,41 @@
 	<nav>
 
     <!-- Hamburger Button -->
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 
-    <ul class="menu" id="mainMenu">
-        <li><a href="#" onclick="closeMenu()">Home</a></li>
-		<li><a href="#" onclick="closeMenu()">About Us</a></li>
-        <li>
-            <a href="#" onclick="closeMenu()">Products ▾</a>
-            <!-- Original Mega Menu -->
-            <div class="mega">
-                <div class="col">
-                    <h4>Cameras</h4>
-                    <a href="#">DSLR</a><br>
-                    <a href="#">Mirrorless</a><br>
-                    <a href="#">Action Cameras</a>
-                </div>
-                <div class="col">
-                    <h4>Lenses</h4>
-                    <a href="#">Wide Angle</a><br>
-                    <a href="#">Telephoto</a><br>
-                    <a href="#">Prime</a>
-                </div>
-                <div class="col">
-                    <h4>Accessories</h4>
-                    <a href="#">Tripods</a><br>
-                    <a href="#">Lighting</a><br>
-                    <a href="#">Memory Cards</a>
-                </div>
-            </div>
-        </li>
-        <li><a href="#" onclick="closeMenu()">Blog</a></li>
-        <li><a href="#" onclick="closeMenu()">Contact</a></li>
-    </ul>
+  <ul class="menu" id="mainMenu">
+    <li><a href="#" onclick="closeMenu()">Home</a></li>
+	<li><a href="#" onclick="closeMenu()">About Us</a></li>
+
+    <li class="has-submenu">
+      <a href="javascript:void(0)" onclick="toggleSubMenu()">Products ▾</a>
+      <!-- Mega Menu -->
+      <div class="mega" id="subMenu">
+        <div class="col">
+          <h4>Cameras</h4>
+          <a href="#">DSLR</a><br>
+          <a href="#">Mirrorless</a><br>
+          <a href="#">Action Cameras</a>
+        </div>
+        <div class="col">
+          <h4>Lenses</h4>
+          <a href="#">Wide Angle</a><br>
+          <a href="#">Telephoto</a><br>
+          <a href="#">Prime</a>
+        </div>
+        <div class="col">
+          <h4>Accessories</h4>
+          <a href="#">Tripods</a><br>
+          <a href="#">Lighting</a><br>
+          <a href="#">Memory Cards</a>
+        </div>
+      </div>
+    </li>
+
+    <li><a href="#" onclick="closeMenu()">Blog</a></li>
+    <li><a href="#" onclick="closeMenu()">Contact</a></li>
+  </ul>
+
 	
 	</nav>
 	
@@ -570,7 +638,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at sapien ut 
 
   function toggleSubMenu() {
     const subMenu = document.getElementById("subMenu");
-    subMenu.classList.toggle("show");
+    if (subMenu) {
+      subMenu.classList.toggle("show");
+    }
   }
 </script>
 
