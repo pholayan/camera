@@ -196,6 +196,7 @@
 .logo-wrap { display:flex !important; align-items:center !important; gap:8px; }
 .logo-wrap img.site-logo, .logo-wrap img { width: var(--corner-size) !important; height: var(--corner-size) !important; max-width: var(--corner-size) !important; max-height: var(--corner-size) !important; object-fit: contain !important; }
 
+
 #menu-toggle { width: var(--corner-size) !important; height: var(--corner-size) !important; display:flex !important; align-items:center; justify-content:center; padding:0 !important; border-radius:6px; background:transparent; border:0; cursor:pointer; }
 #menu-toggle .hamburger { width: 22px !important; height: 2.5px !important; background: #222 !important; position:relative !important; display:block !important; }
 #menu-toggle .hamburger::before, #menu-toggle .hamburger::after { content:"" !important; position:absolute !important; left:0 !important; right:0 !important; height:2.5px !important; background:#222 !important; }
@@ -236,6 +237,55 @@
   }
 }
 
+:root { --corner-size-mobile: 48px; }
+
+
+@media (max-width: 800px) {
+  .site-header .header-inner { display:block !important; position:relative !important; padding:10px 12px !important; }
+  .site-header .header-inner > .logo-wrap { position: absolute !important; left: 12px !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1400 !important; }
+  .site-header .header-inner #menu-toggle { position: absolute !important; right: 12px !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1400 !important; display:flex !important; align-items:center; justify-content:center; }
+
+  .site-header .logo-wrap img.site-logo, .site-header .logo-wrap img, #menu-toggle { width: var(--corner-size-mobile) !important; height: var(--corner-size-mobile) !important; max-width: var(--corner-size-mobile) !important; max-height: var(--corner-size-mobile) !important; object-fit: contain !important; border-radius:0 !important; padding:0 !important; }
+  #menu-toggle { background: transparent !important; border: 0 !important; }
+
+  #site-nav { display:block !important; position: static !important; width:100% !important; }
+  #site-nav .nav-list { display: none !important; flex-direction: column !important; gap:0 !important; margin:0 !important; padding:0 !important; list-style:none !important; background:#fff !important; }
+  #site-nav .nav-list.show { display:flex !important; }
+
+  #site-nav .nav-list { position:absolute !important; left:0 !important; right:0 !important; top:100% !important; box-shadow: 0 6px 24px rgba(0,0,0,0.06) !important; border-top: 1px solid rgba(0,0,0,0.06) !important; }
+  #site-nav .nav-list li { width:100% !important; box-sizing:border-box !important; border-bottom: 1px solid rgba(0,0,0,0.04) !important; }
+  #site-nav .nav-list a { display:block !important; width:100% !important; padding:14px 18px !important; text-decoration:none !important; color:inherit !important; }
+
+  .site-header .header-inner > :not(.logo-wrap):not(#menu-toggle):not(#site-nav) { display:none !important; }
+
+  .featured-products, .featured, .product-grid, .products, .product-list, .cards, .grid, .products-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .featured-products > *, .featured > *, .product-grid > *, .products > *, .product-list > *, .cards > *, .grid > *, .products-container > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(0,0,0,0.12) !important;
+    background:#fff !important;
+    padding:8px !important;
+    margin:0 !important;
+    
+    aspect-ratio: 3 / 2 !important;
+    overflow:hidden !important;
+    display:block !important;
+  }
+
+  .featured-products img, .product-grid img, .products img, .cards img, .grid img, .product-list img {
+    width:100% !important;
+    height:100% !important;
+    object-fit: cover !important;
+    display:block !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -362,6 +412,55 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at sapien ut 
 
 
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var btn = document.getElementById('menu-toggle');
+  var nav = document.getElementById('site-nav');
+  if(!btn || !nav) return;
+  var list = nav.querySelector('.nav-list');
+  // If no list exists, create a safe fallback by building from existing links
+  if(!list) {
+    list = document.createElement('ul');
+    list.className = 'nav-list';
+    // try to collect any <a> inside nav and move them into the list
+    var links = nav.querySelectorAll('a');
+    links.forEach(function(a){
+      var li = document.createElement('li');
+      var clone = a.cloneNode(true);
+      li.appendChild(clone);
+      list.appendChild(li);
+    });
+    // clear nav and append list
+    nav.innerHTML = '';
+    nav.appendChild(list);
+  }
+
+  // click toggles .show which displays the vertical menu
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isShown = list.classList.contains('show');
+    if(isShown) {
+      list.classList.remove('show');
+      btn.setAttribute('aria-expanded','false');
+    } else {
+      list.classList.add('show');
+      btn.setAttribute('aria-expanded','true');
+    }
+  });
+
+  // close menu when clicking outside
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target) && !nav.contains(e.target)) {
+      if(list.classList.contains('show')) {
+        list.classList.remove('show');
+        btn.setAttribute('aria-expanded','false');
+      }
+    }
+  });
+});
+</script>
 
 </body>
 </html>
