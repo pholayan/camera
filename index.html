@@ -191,40 +191,48 @@
         margin-top: 50px;
     }
 
-.site-header .header-inner { display:flex !important; align-items:center !important; justify-content:space-between !important; position:relative !important; padding-left: 12px !important; padding-right: 12px !important; }
-.site-header .logo-wrap { order:1 !important; flex: 0 0 auto !important; display:block !important; }
-.site-header .logo-wrap img { display:block !important; visibility:visible !important; opacity:1 !important; max-height:64px !important; height:auto !important; width:auto !important; }
-.site-header #menu-toggle { order:3 !important; margin-left:auto !important; position:relative !important; right:0 !important; z-index:1200 !important; }
+:root { --corner-size: 48px; }
 
-.site-header #site-nav { order:2 !important; flex:1 1 auto !important; }
+.logo-wrap { display:flex !important; align-items:center !important; gap:8px; }
+.logo-wrap img.site-logo, .logo-wrap img { width: var(--corner-size) !important; height: var(--corner-size) !important; max-width: var(--corner-size) !important; max-height: var(--corner-size) !important; object-fit: contain !important; }
+
+#menu-toggle { width: var(--corner-size) !important; height: var(--corner-size) !important; display:flex !important; align-items:center; justify-content:center; padding:0 !important; border-radius:6px; background:transparent; border:0; cursor:pointer; }
+#menu-toggle .hamburger { width: 22px !important; height: 2.5px !important; background: #222 !important; position:relative !important; display:block !important; }
+#menu-toggle .hamburger::before, #menu-toggle .hamburger::after { content:"" !important; position:absolute !important; left:0 !important; right:0 !important; height:2.5px !important; background:#222 !important; }
+#menu-toggle .hamburger::before { top:-7px !important; }
+#menu-toggle .hamburger::after { top:7px !important; }
 
 .site-header { position:relative !important; }
-.site-header #menu-toggle { position:absolute !important; right:16px !important; top:50% !important; transform:translateY(-50%) !important; }
+.header-inner { padding-left:12px !important; padding-right:12px !important; }
+.site-header .logo-wrap { position:relative; left:0; }
+.site-header #menu-toggle { position:absolute !important; right:12px !important; top:50% !important; transform:translateY(-50%) !important; z-index:1300 !important; }
 
 @media (max-width: 800px) {
-  .featured-products, .featured, .product-grid, .products, .product-list, .cards, .grid, .products-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+  #site-nav .nav-list { display: none !important; flex-direction: column !important; gap:0 !important; background: #fff !important; border-top: 1px solid rgba(0,0,0,0.06) !important; }
+  #site-nav .nav-list.show { display:flex !important; }
+  /* Ensure menu items are full width when visible */
+  #site-nav .nav-list li { width:100% !important; box-sizing:border-box !important; }
+  #site-nav .nav-list a { display:block !important; width:100% !important; padding:14px 18px !important; }
+}
+
+@media (max-width: 800px) {
   .featured-products > *, .featured > *, .product-grid > *, .products > *, .product-list > *, .cards > *, .grid > *, .products-container > * {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-  }
-  .featured-products img, .product-grid img, .products img, .cards img, .grid img, .product-list img {
-    max-width: 100% !important;
-    height: auto !important;
+    border: 1px solid rgba(0,0,0,0.12) !important;
+    padding: 8px !important;
+    background: #fff !important;
+    aspect-ratio: 16/9 !important; 
+    overflow: hidden !important;
     display: block !important;
   }
-  #site-nav .nav-list {
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: 100% !important;
-    background: #fff !important;
+  
+  .featured-products img, .product-grid img, .products img, .cards img, .grid img, .product-list img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display:block !important;
   }
 }
 
@@ -350,6 +358,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at sapien ut 
 
   </div>
 </footer>
+
+
+
+
 
 </body>
 </html>
