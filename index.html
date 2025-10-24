@@ -51,7 +51,6 @@
 	margin:0 0 8px;
 	font-size:14px
 	}
-	/* === menu styles from Homepage.html === */
 	.menu{
 	display:flex;
 	gap:18px
@@ -191,35 +190,33 @@
         padding: 20px;
         margin-top: 50px;
     }
-	
-	/* ====== Desktop Mega Menu Restore ====== */
-@media (min-width: 769px) {
-  .hamburger {
+	@media (min-width: 769px) {
+	.hamburger {
     display: none;
-  }
+	}
 
-  .menu {
+	.menu {
     display: flex !important;
     gap: 18px;
-  }
+	}
 
-  .menu > li {
+	.menu > li {
     list-style: none;
     position: relative;
-  }
+	}
 
-  .menu a {
+	.menu a {
     color: #222;
     text-decoration: none;
     padding: 8px 10px;
     display: inline-block;
-  }
+	}
 
-  .menu > li:hover .mega {
+	.menu > li:hover .mega {
     display: flex;
-  }
+	}
 
-  .mega {
+	.mega {
     position: absolute;
     left: 0;
     top: 40px;
@@ -229,17 +226,16 @@
     padding: 18px;
     display: none;
     width: 760px;
-  }
+	}
 
-  .mega .col {
+	.mega .col {
     flex: 1;
     padding: 8px;
-  }
-}
+	}
+	}
 
-/* ====== Mobile Hamburger Dropdown (no hover) ====== */
-@media (max-width: 768px) {
-  .menu {
+	@media (max-width: 768px) {
+	.menu {
     display: none;
     flex-direction: column;
     background-color: #fff;
@@ -250,117 +246,109 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     border-radius: 8px;
     z-index: 1000;
-  }
+	}
 
-  .menu.show {
+	.menu.show {
     display: flex;
-  }
+	}
 
-  .menu a {
+	.menu a {
     display: block;
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #eee;
-  }
+	}
 
-  .menu a:last-child {
+	.menu a:last-child {
     border-bottom: none;
-  }
+	}
 
-  /* Disable hover submenus on mobile */
-  .mega {
+	.mega {
     display: none !important;
     position: static;
     box-shadow: none;
     padding: 0;
-  }
-}
+	}
+	}
 
 
 
-/* ===== Mobile Responsive Styles ===== */
-@media (max-width: 768px) {
-  header {
+	@media (max-width: 768px) {
+	header {
     flex-direction: column;
     text-align: center;
     padding: 15px;
-  }
+	}
 
-  header img {
+	header img {
     height: 100px;
     margin-bottom: 10px;
-  }
+	}
 
-  nav a {
+	nav a {
     display: block;
     margin: 10px 0;
     font-size: 16px;
-  }
+	}
 
-  .hero {
+	.hero {
     padding: 60px 20px;
-  }
+	}
 
-  .hero h1 {
+	.hero h1 {
     font-size: 28px;
-  }
+	}
 
-  .hero p {
+	.hero p {
     font-size: 16px;
-  }
+	}
 
-  .grid {
+	.grid {
     grid-template-columns: 1fr 1fr;
-  }
+	}
 
-  .card img {
+	.card img {
     height: 180px;
-  }
+	}
 
-  .promo {
+	.promo {
     flex-direction: column;
     text-align: center;
     gap: 15px;
-  }
+	}
 
-  .cats {
+	.cats {
     flex-direction: column;
-  }
+	}
 
-  .cat img {
+	.cat img {
     width: 100%;
     height: auto;
-  }
+	}
 
-  footer {
+	footer {
     padding: 15px;
     font-size: 14px;
-  }
-}
+	}
+	}
 
-/* ===== For very small screens (phones under 480px) ===== */
-@media (max-width: 480px) {
-  .grid {
+
+	@media (max-width: 480px) {
+	.grid {
     grid-template-columns: 1fr;
-  }
+	}
 
-  nav a {
+	nav a {
     font-size: 14px;
-  }
+	}
 
-  .hero h1 {
+	.hero h1 {
     font-size: 22px;
-  }
-}
+	}
+	}
 
-
-
-
-
-
-/* ====== Mobile Hamburger Dropdown ====== */
-@media (max-width: 768px) {
-  .menu {
+	@media (max-width: 768px) {
+	.menu {
     display: none;
     flex-direction: column;
     background-color: #fff;
@@ -371,25 +359,24 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     border-radius: 8px;
     z-index: 1000;
-  }
+	}
 
-  .menu.show {
+	.menu.show {
     display: flex;
-  }
+	}
 
-  .menu a {
+	.menu a {
     display: block;
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #eee;
-  }
+	}
 
-  .menu a:last-child {
+	.menu a:last-child {
     border-bottom: none;
-  }
+	}
 
-  /* Make mega menu appear below Products on mobile */
-  .has-submenu .mega {
+	.has-submenu .mega {
     display: none;
     flex-direction: column;
     background: #fff;
@@ -397,38 +384,36 @@
     box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
     border-radius: 8px;
     margin-top: 5px;
-  }
+	}
 
-  .has-submenu .mega.show {
+	.has-submenu .mega.show {
     display: flex;
-  }
+	}
 
-  /* Adjust columns to stack nicely on mobile */
-  .mega .col {
+  
+	.mega .col {
     flex: 1 1 100%;
     padding: 5px 0;
-  }
+	}
 
-  .mega h4 {
+	.mega h4 {
     margin-bottom: 5px;
     font-size: 14px;
-  }
+	}
 
-  .hamburger {
+	.hamburger {
     display: block;
-  }
-}
+	}
+	}
 
-
-/* ====== Mobile Hamburger and Submenu ====== */
-@media (max-width: 768px) {
-  .hamburger {
+	@media (max-width: 768px) {
+	.hamburger {
     display: block;
     font-size: 26px;
     cursor: pointer;
-  }
+	}
 
-  .menu {
+	.menu {
     display: none;
     flex-direction: column;
     background-color: #fff;
@@ -441,25 +426,24 @@
     z-index: 1000;
     overflow-y: auto;
     max-height: 80vh;
-  }
+	}
 
-  .menu.show {
+	.menu.show {
     display: flex;
-  }
+	}
 
-  .menu a {
+	.menu a {
     display: block;
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #eee;
-  }
+	}
 
-  .menu a:last-child {
+	.menu a:last-child {
     border-bottom: none;
-  }
+	}
 
-  /* Submenu (Mega) in Mobile */
-  .has-submenu .mega {
+	.has-submenu .mega {
     display: none;
     flex-direction: column;
     background: #fafafa;
@@ -467,18 +451,18 @@
     box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
     border-radius: 8px;
     margin-top: 5px;
-  }
+	}
 
-  .has-submenu .mega.show {
+	.has-submenu .mega.show {
     display: flex !important; /* override any previous display:none */
-  }
+	}
 
-  .mega .col {
+	.mega .col {
     flex: 1 1 100%;
     padding: 6px 0;
-  }
+	}
 
-  .mega h4 {
+	.mega h4 {
     font-size: 14px;
     margin-bottom: 5px;
   }
@@ -493,42 +477,38 @@
     
 	<nav>
 
-    <!-- Hamburger Button -->
   <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 
   <ul class="menu" id="mainMenu">
     <li><a href="#" onclick="closeMenu()">Home</a></li>
 	<li><a href="#" onclick="closeMenu()">About Us</a></li>
-
     <li class="has-submenu">
       <a href="javascript:void(0)" onclick="toggleSubMenu()">Products ▾</a>
       <!-- Mega Menu -->
       <div class="mega" id="subMenu">
         <div class="col">
-          <h4>Cameras</h4>
-          <a href="#">DSLR</a><br>
-          <a href="#">Mirrorless</a><br>
-          <a href="#">Action Cameras</a>
+          <h4>Lorem ipsum</h4>
+          <a href="#">Lorem ipsum</a><br>
+          <a href="#">Lorem ipsum</a><br>
+          <a href="#">Lorem ipsum</a>
         </div>
         <div class="col">
-          <h4>Lenses</h4>
-          <a href="#">Wide Angle</a><br>
-          <a href="#">Telephoto</a><br>
-          <a href="#">Prime</a>
+          <h4>Lorem ipsum</h4>
+          <a href="#">Lorem ipsum</a><br>
+          <a href="#">Lorem ipsum</a><br>
+          <a href="#">Lorem ipsum</a>
         </div>
         <div class="col">
-          <h4>Accessories</h4>
-          <a href="#">Tripods</a><br>
-          <a href="#">Lighting</a><br>
-          <a href="#">Memory Cards</a>
+          <h4>Lorem ipsum</h4>
+          <a href="#">Lorem ipsum</a><br>
+          <a href="#">Lorem ipsum</a><br>
+          <a href="#">Lorem ipsum</a>
         </div>
       </div>
     </li>
-
     <li><a href="#" onclick="closeMenu()">Blog</a></li>
     <li><a href="#" onclick="closeMenu()">Contact</a></li>
   </ul>
-
 	
 	</nav>
 	
